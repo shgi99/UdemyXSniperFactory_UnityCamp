@@ -1,1 +1,2 @@
-# UdemyXSniperFactory_UnityCamp
+# [유데미x스나이퍼팩토리] 10주 완성 프로젝트 캠프
+캠프 기간 동안 진행하는 실습 및 작업물들이 있는 레포지토리
