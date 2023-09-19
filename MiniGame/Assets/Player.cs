@@ -6,31 +6,31 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float jumpPower = 8;
+    public float jumpPower = 10;
     public float y_low = -4;
     public float boost_jump = 1.5f;
     public float move_x = 0.5f;
     public float scale_y = 0.2f;
-    public float rotation_x = 10;
-    public float rotation_z = 20;
+    public float rotation_x = 200.0f;
+    public float rotation_z = 300.0f;
     TextMesh scoreOutput;
     int score = 0;
     void Start()
     {
-        scoreOutput = GameObject.Find(name: "Score").GetComponent<TextMesh>(); // ì´ë¦„ìœ¼ë¡œ ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ê³ , ê·¸ì¤‘ TextMesh ì»´í¬ë„ŒíŠ¸ë¥¼ ì–»ìŒ
+        scoreOutput = GameObject.Find(name: "Score").GetComponent<TextMesh>(); // ÀÌ¸§À¸·Î °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ Ã£°í, ±×Áß TextMesh ÄÄÆ÷³ÍÆ®¸¦ ¾òÀ½
     }
 
     // Update is called once per frame 
     void Update()
     {
-        transform.position += new Vector3(move_x * Time.deltaTime, 0, 0); // ê³„ì† ì•ìœ¼ë¡œ ì „ì§„í•¨
-        // transform.localScale += new Vector3(0, scale_y * Time.deltaTime, 0); // ì˜¤ë¸Œì íŠ¸ì˜ y scaleì„ í‚¤ì›€ / localì€ ë‚˜ ìì‹ , localì´ ì•ˆë¶™ìœ¼ë©´ ìì‹? ìƒì†ëœê±°ë„ í•´ë‹¹ëœë‹¤
-        if (Input.GetButtonDown("Jump")) // "Jump"ëŠ” ë¬¸ìì—´ì´ë¼ ë¬¸ìê°€ ë‹¬ë¼ë„ ë¬¸ì œ ì¸ì‹ì„ ëª»í•˜ì§€ë§Œ ë°œë™ì€ ì•ˆë ê²ƒì´ë‹¤. ì´ ì  ìœ ì˜
+        transform.Rotate(rotation_x * Time.deltaTime, 0, rotation_z * Time.deltaTime);
+        transform.position += new Vector3(move_x * Time.deltaTime, 0, 0); // °è¼Ó ¾ÕÀ¸·Î ÀüÁøÇÔ
+        // transform.localScale += new Vector3(0, scale_y * Time.deltaTime, 0); // ¿ÀºêÁ§Æ®ÀÇ y scaleÀ» Å°¿ò / localÀº ³ª ÀÚ½Å, localÀÌ ¾ÈºÙÀ¸¸é ÀÚ½Ä? »ó¼ÓµÈ°Åµµ ÇØ´çµÈ´Ù
+        if (Input.GetButtonDown("Jump")) // "Jump"´Â ¹®ÀÚ¿­ÀÌ¶ó ¹®ÀÚ°¡ ´Ş¶óµµ ¹®Á¦ ÀÎ½ÄÀ» ¸øÇÏÁö¸¸ ¹ßµ¿Àº ¾ÈµÉ°ÍÀÌ´Ù. ÀÌ Á¡ À¯ÀÇ
         {
-            transform.Rotate(rotation_x, 0, rotation_z);
-            if (transform.position.y < y_low)
+            if(transform.position.y < y_low)
             {
-                GetComponent<Rigidbody>().velocity = new Vector3(0, jumpPower * boost_jump, 0); // ë†’ì´ê°€ ë‚®ì„ê²½ìš° ë¶€ìŠ¤íŠ¸ ì í”„ ë°œë™
+                GetComponent<Rigidbody>().velocity = new Vector3(0, jumpPower * boost_jump, 0); // ³ôÀÌ°¡ ³·À»°æ¿ì ºÎ½ºÆ® Á¡ÇÁ ¹ßµ¿
             }
             else
             {
@@ -40,21 +40,15 @@ public class Player : MonoBehaviour
             
     }
 
-    private void OnCollisionEnter(Collision collision) // Colliderì— ì¶©ëŒí•˜ê²Œ ë˜ë©´ ë°œë™ 
+    private void OnCollisionEnter(Collision collision) // Collider¿¡ Ãæµ¹ÇÏ°Ô µÇ¸é ¹ßµ¿ 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // í˜„ì¬ ì¼œì ¸ìˆëŠ” ì”¬ì„ ë¶ˆëŸ¬ì˜´ - ì²˜ìŒë¶€í„° ì‹œì‘, GetActiveScene = í˜„ì¬ ì”¬
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        score += 100;
-        scoreOutput.text = "ì ìˆ˜ : " + score;
-        Destroy(other.gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // ÇöÀç ÄÑÁ®ÀÖ´Â ¾ÀÀ» ºÒ·¯¿È - Ã³À½ºÎÅÍ ½ÃÀÛ, GetActiveScene = ÇöÀç ¾À
     }
 
     public void addScore(int s)
     {
         score += s;
-        scoreOutput.text = "ì ìˆ˜ : " + score;
+        scoreOutput.text = "Á¡¼ö : " + score;
     }
 }
     

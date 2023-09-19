@@ -4,43 +4,32 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject coinPrefab;
     public GameObject[] wallPrefab;
     public GameObject dropPrefab;
-    public float interval = 1.5f;
-    public float interval_2 = 2f;// ì¼ì • ì‹œê°„
+    public float interval = 1.1f; // ÀÏÁ¤ ½Ã°£
     public float range = 3;
-    float term, term_2;
+    float term;
     // Start is called before the first frame update
     void Start()
     {
-        term = interval; // ì‹œìž‘ë¶€í„° ë²½ì´ í•˜ë‚˜ ë‚˜ì˜¤ê²Œ í•˜ê¸° ìœ„í•´
+        term = interval; // ½ÃÀÛºÎÅÍ º®ÀÌ ÇÏ³ª ³ª¿À°Ô ÇÏ±â À§ÇØ
     }
 
     // Update is called once per frame
     void Update()
     {
         term += Time.deltaTime;
-        term_2 += Time.deltaTime;
-        if (term >= interval) // ì¼ì •ì‹œê°„ì´ ì§€ë‚˜ë©´
+        if(term >= interval) // ÀÏÁ¤½Ã°£ÀÌ Áö³ª¸é
         {
             Vector3 pos = transform.position;
             pos.y += Random.Range(-range, range);
             int wallType = Random.Range(0, wallPrefab.Length);
-            Instantiate(wallPrefab[wallType], pos, transform.rotation); // ë‹¤ì–‘í•œ ë²½ë“¤ì„ ë¬´ìž‘ìœ„ë¡œ ìƒì„±
+            Instantiate(wallPrefab[wallType], pos, transform.rotation); // ´Ù¾çÇÑ º®µéÀ» ¹«ÀÛÀ§·Î »ý¼º
             if(Random.Range(0, 2) == 1)
             {
-                // Instantiate(dropPrefab); // 50%ì˜ í™•ë¥ ë¡œ ë–¨ì–´ì§€ëŠ” ìž¥ì• ë¬¼ ìƒì„±
+                Instantiate(dropPrefab); // 50%ÀÇ È®·ü·Î ¶³¾îÁö´Â Àå¾Ö¹° »ý¼º
             }
             term -= interval;
-        }
-
-        if(term_2 >= interval_2)
-        {
-            Vector3 pos = transform.position;
-            pos.y += Random.Range(-range, range);
-            Instantiate(coinPrefab, pos, transform.rotation);
-            term_2 -= interval_2;
         }
     }
 }

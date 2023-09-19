@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public float speed = -4;
-    public float rotation_z;
+    public float speed = -6;
     Player player;
     // Start is called before the first frame update
     void Start()
     {
-        rotation_z = Random.Range(0, 30);
-        transform.Rotate(0, 0, rotation_z);
         player = GameObject.Find(name : "Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Xë°©í–¥ìœ¼ë¡œ ì›€ì§ì´ê²Œ í•¨, Time.deltaTimeì€ ì•„ì£¼ ì‘ì€ ê°’ìœ¼ë¡œ ì´ê±¸ ê³±í•´ì¤˜ì„œ speedë§Œí¼ ì´ë™í•˜ê²Œë” ë§Œë“¤ì–´ì¤Œ
+        // X¹æÇâÀ¸·Î ¿òÁ÷ÀÌ°Ô ÇÔ, Time.deltaTimeÀº ¾ÆÁÖ ÀÛÀº °ªÀ¸·Î ÀÌ°É °öÇØÁà¼­ speed¸¸Å­ ÀÌµ¿ÇÏ°Ô²û ¸¸µé¾îÁÜ
         transform.Translate(speed * Time.deltaTime, 0, 0);
         if (transform.position.x < -10)
         {
-            player.addScore(Random.Range(1, 5));
             Destroy(gameObject);
-        } // xê°’ì´ -10, ë²”ìœ„ ë°–ì—ë©´ ì‚­ì œì™€ ì ìˆ˜ 1~5ì 
+            player.addScore(1);
+        } // x°ªÀÌ -10, ¹üÀ§ ¹Û¿¡¸é »èÁ¦¿Í Á¡¼ö +1
             
     }
 }
