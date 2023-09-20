@@ -1,0 +1,18 @@
+Ctrl+d = Ctrl+c + Ctrl+v
+수학적, 물리적 법칙은 알면 좋겠지만 유니티에서는 다 편하게 적용시킬 수 있다
+RigidBody - Constraints에는 위치(Position), 회전(Rotation)을 고정시키는 기능이 있음
+Ctrl+Shift+M - 유니티 메세지 구현 창이 뜨며 unity에서 사용되어지는 기본 함수들이 나옴
+Player가 움직이지 않고 장애물과 배경이 움직이는 구조의 횡스크롤? - Player를 계속 움직이게 하면 값은 계속 높아지고 이는 자원낭비?일수도 있고 버그가 날 우려
+게임엔 생각보다 눈속임같은게 많다
+
+수치 변경
+중력 - Edit > Project Settings.. > Physics > Gravity
+벽의 속도 - Wall 프리팹의 speed
+벽의 간격 - interval
+벽의 높이 차이 - Spawner의 Range
+점프력 - Player의 jumpPower
+
+원래 있던 프리팹을 개조, 이를 활용해서 다른 프리팹을 만들고자하면 일단 프리팹을 풀어야함 prefab - unpack ...
+copy/paste component - component 내용을 복사 붙여넣기 가능
+Mash Renderer - Materials를 통해 재질, 색깔 변경가능
+Instantiate에는 position과 rotation을 생략할 수 있는데, 적어놓으면 그 적어놓은걸 반영, 생략했을 경우에는 그 오브젝트에 있던 값대로 반영된다

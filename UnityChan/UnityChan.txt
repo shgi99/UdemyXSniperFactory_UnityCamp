@@ -1,0 +1,35 @@
+Camera.main - gameobject 변수를 딱히 생성안해도 main camera를 찾음 / Main Camera에 MainCamera 태그가 붙어야함
+Mouse X - 마우스 X값 변화, Mouse Y - 마우스 Y값 변화
+transform.parent.gameobject - 부모의 transform의 gameobject
+Quaternion - 회전, rotation에 관한 변수 (회전을 더 잘쓸수 있다?)
+AudioSource에 AudioClip을 할당하는 것이 아닌 스크립트에서 각 상황에 맞는 클립 변수에 소리를 할당한 다음 재생하는 식으로 함
+
+PlayerPrefs - <Key Value>로 데이터를 저장하는 클래스 / Key값은 string이며, Key는 Value를 찾기 위한 식별자 
+데이터를 메모리 상에 저장하고, 이를 하드 드라이브에 저장 (DB같은 개념으로 사용 가능?)
+간단한 설정들을 기억하는 용도
+윈도 플랫폼에서는 사용자 레지스트리에 저장
+
+PlayerPrefs.DeleteKey("str"); // 해당 키의 값을 삭제
+PlayerPrefs.DeleteAll(); // 모든 값을 삭제
+PlayerPrefs.SetFloat("f_num", 1.23f); // 실수 기록
+float f_num = PlayerPrefs.GetFloat("f_num"); // 실수 얻기
+PlayerPrefs.SetInt("i_num", 123); // 정수 기록
+int i_num = PlayerPrefs.GetInt("i_num"); // 정수 얻기
+PlayerPrefs.SetString("str", "abc"); // 문자열 기록
+string str = PlayerPrefs.GetString("str"); // 문자열 얻기
+PlayerPrefs.Save(); // 지금 당장 변경사항 저장
+
+Ray - 선, 카메라 방향으로 쭉 이어지는 선
+RaycastHit - 선과 무언가가 충돌하는지를 판단하는 것
+Raycast - bool 함수, Ray와 RaycastHit와 일정 길이 내에 충돌하는지를 판별
+
+animator를 update에서 false로 설정해놓아야 클릭했을때만 true로 전환함으로써 애니메이션이 발동되도록 가능
+animator.GetCurrentAnimatorStateInfo(0).fullPathHash - 애니메이터의 현재 진행중인 동작을 해시로 받아와서 상태를 확인하는 것
+
+button
+normal - 마우스가 안 닿았을때 상태 / hover - 마우스가 닿았을 때 상태 / active - 버튼을 눌렀을 때 상태
+
+여기서 진행한것은 onGUI
+UGUI와 NGUI
+유니티에서 기본 제공하는 UGUI(무료)
+서드파티인 NGUI(유료 95달러)
