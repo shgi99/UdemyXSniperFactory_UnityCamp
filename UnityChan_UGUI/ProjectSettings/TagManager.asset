@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Head
   - Body
+  - Arms
   layers:
   - Default
   - TransparentFX
