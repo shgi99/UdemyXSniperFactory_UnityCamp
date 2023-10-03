@@ -12,7 +12,6 @@ public class Point : MonoBehaviour
         PointRigidbody = GetComponent<Rigidbody>();
         PointRigidbody.velocity = transform.forward * speed;
 
-        Destroy(gameObject, 3f); // 3초 뒤 자신의 게임 오브젝트 파괴
     }
 
     // Update is called once per frame

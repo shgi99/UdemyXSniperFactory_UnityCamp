@@ -7,6 +7,7 @@ public class BullerSpawner : MonoBehaviour
     public GameObject bulletPointPrefab;
     public float spawnRateMin = 0.5f; // 弥家 积己 林扁
     public float spawnRateMax = 3f; // 弥措 积己 林扁
+    public bool isGameover;
 
     private Transform target; // 惯荤且 措惑 
     private float spawnRate; // 积己 林扁
@@ -22,16 +23,21 @@ public class BullerSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeAfterSpawn += Time.deltaTime;
-        if(timeAfterSpawn >= spawnRate) 
+        isGameover = FindObjectOfType<GameManager>().isGameover;
+        if (!isGameover)
         {
-            timeAfterSpawn = 0;
+            if (timeAfterSpawn >= spawnRate)
+            {
+                timeAfterSpawn = 0;
 
-            GameObject bullet = Instantiate(bulletPointPrefab, transform.position, transform.rotation);
+                GameObject bullet = Instantiate(bulletPointPrefab, transform.position, transform.rotation);
 
-            bullet.transform.LookAt(target);
+                bullet.transform.LookAt(target);
 
-            spawnRate = Random.Range(spawnRateMin, spawnRateMax);
+                spawnRate = Random.Range(spawnRateMin, spawnRateMax);
+            }
         }
+        timeAfterSpawn += Time.deltaTime;
+
     }
 }

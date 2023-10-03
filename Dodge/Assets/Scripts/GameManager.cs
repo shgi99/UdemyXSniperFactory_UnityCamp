@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public Text timeText;
     public Text recordText;
     private float surviveRecord;
-    private bool isGameover;
+    public bool isGameover;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,5 +50,9 @@ public class GameManager : MonoBehaviour
     public void addScore()
     {
         surviveRecord += 5;
+    }
+    public bool Get_isGameover()
+    {
+        return isGameover;
     }
 }
