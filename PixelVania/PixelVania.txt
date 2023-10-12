@@ -1,0 +1,19 @@
+pixel per unit 
+그래픽 png 이미지의 픽셀이 하나의 유니티 단위에 상응하는것을 의미
+
+sprite를 자르는 방법 - multiple로 전환 후 sprite editor로 들어가 slice 함
+
+타일 에셋을 타일 팔레트에 넣어서 타일맵으로 만들수 있음
+window - 2d - tile palette - 타일 팔레트 만들어서 스프라이트 넣기
+rule tile을 이용하면 하나의 타일로 칠해도 조건에 따라 맞는 타일이 되도록 할 수있다(회전 고려까지)
+
+애니메이션 설정때 입력 받으면 바로 애니메이션 전환을 원할때 Transition - Settings - 다 0 + Has Exit Time off
+
+Tile을 collider 할때는 tilemap collider + 타일 사이에 끼는 버그를 방지하기 위해 composite collider
+
+Input System - 입력값을 값으로 받아 그 값에 따라 처리하도록 해줌
+
+시네머신 컨파이너로 카메라가 맵 밖으로 벗어나는걸 막을 수 있음 collider를 사용하면서
+State-Driven Camera - 타겟 상태에 따라 확대 축소 등의 카메라 상태를 변경가능
+
+physics material 2D - 이 material에 충돌하면 더 높게 점프한다거나 그런 작동 가능(이 게임에선 버섯에 충돌시 높이 날라감)
